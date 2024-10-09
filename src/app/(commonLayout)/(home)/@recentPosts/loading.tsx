@@ -1,12 +1,8 @@
+import Container from "@/src/components/Ui/Container";
+import CardSkeleton from "@/src/components/Ui/Skeletons/CardSkeleton";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import Container from "../../Ui/Container";
-import { FieldValues } from "react-hook-form";
-import { getRecentPosts } from "@/src/services/RecentPost";
-
 export default async function RecentPosts() {
-  const { data: posts } = await getRecentPosts();
-
   return (
     <Container>
       <div className="section-title my-8">
@@ -15,9 +11,9 @@ export default async function RecentPosts() {
           A list of items that have been recently found and reported.
         </p>
       </div>
-      <div className="my-8 grid justify-center gap-10 sm:grid-cols-1 md:grid-cols-4">
-        {posts.map((item: FieldValues) => (
-          <p>{item.title}</p>
+      <div className="my-8 grid justify-center gap-10 sm:grid-cols-1 md:grid-cols-3">
+        {[...Array(3)].map(() => (
+          <CardSkeleton />
         ))}
       </div>
       <div className="flex justify-center">

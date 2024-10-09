@@ -25,6 +25,7 @@ import {
   SearchIcon,
   Logo,
 } from "@/src/components/icons";
+import NavbarDropdown from "./NavbarDropdown";
 
 export const Navbar = () => {
   const searchInput = (
@@ -81,6 +82,7 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
+          <NavbarDropdown />
         </NavbarItem>
         <NavbarItem className="hidden md:flex">
         </NavbarItem>
