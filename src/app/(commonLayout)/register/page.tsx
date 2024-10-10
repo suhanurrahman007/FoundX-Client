@@ -2,7 +2,8 @@
 
 import FXForm from "@/src/components/Form/FXForm";
 import FXInput from "@/src/components/Form/FXInput";
-import useRegisterUser from "@/src/hooks/useRegisterUser";
+import Loading from "@/src/components/Ui/Loading";
+import { useRegisterUser } from "@/src/hooks/authUser";
 import registerValidationSchema from "@/src/schemas/register.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@nextui-org/button";
@@ -21,54 +22,57 @@ export default function RegisterPage() {
     handleRegistration(userData)
   };
   return (
-    <div className="flex h-[calc(100vh-100px)] flex-col items-center justify-center">
-      <h3 className="my-2 text-xl font-bold">Register with FoundX</h3>
-      <p className="mb-4">Help Lost Items Find Their Way Home</p>
-      <div className="w-[35%]">
-        <FXForm
-          //! Only for development
-          defaultValues={{
-            name: "Mir Hussein",
-            email: "mir@gmail.com",
-            mobileNumber: "01711223344",
-            password: "123456",
-          }}
-          resolver={zodResolver(registerValidationSchema)}
-          onSubmit={onSubmit}
-        >
-          <div className="py-3">
-            <FXInput label="Name" name="name" size="sm" />
-          </div>
-          <div className="py-3">
-            <FXInput label="Email" name="email" size="sm" />
-          </div>
-          <div className="py-3">
-            <FXInput label="Mobile Number" name="mobileNumber" size="sm" />
-          </div>
-          <div className="py-3">
-            <FXInput
-              label="Password"
-              name="password"
-              size="sm"
-              type="password"
-            />
-          </div>
-
-          <Button
-            className="my-3 w-full rounded-md bg-default-900 text-default"
-            size="lg"
-            type="submit"
+    <>
+      {isPending && <Loading />}
+      <div className="flex h-[calc(100vh-100px)] flex-col items-center justify-center">
+        <h3 className="my-2 text-xl font-bold">Register with FoundX</h3>
+        <p className="mb-4">Help Lost Items Find Their Way Home</p>
+        <div className="w-[35%]">
+          <FXForm
+            //! Only for development
+            defaultValues={{
+              name: "Mir Hussein",
+              email: "mir@gmail.com",
+              mobileNumber: "01711223344",
+              password: "123456",
+            }}
+            resolver={zodResolver(registerValidationSchema)}
+            onSubmit={onSubmit}
           >
-            Registration
-          </Button>
-        </FXForm>
-        <div className="text-center">
-          Already have an account ?{" "}
-          <Link className="text-blue-600 font-bold underline" href={"/login"}>
-            Login
-          </Link>
+            <div className="py-3">
+              <FXInput label="Name" name="name" size="sm" />
+            </div>
+            <div className="py-3">
+              <FXInput label="Email" name="email" size="sm" />
+            </div>
+            <div className="py-3">
+              <FXInput label="Mobile Number" name="mobileNumber" size="sm" />
+            </div>
+            <div className="py-3">
+              <FXInput
+                label="Password"
+                name="password"
+                size="sm"
+                type="password"
+              />
+            </div>
+
+            <Button
+              className="my-3 w-full rounded-md bg-default-900 text-default"
+              size="lg"
+              type="submit"
+            >
+              Registration
+            </Button>
+          </FXForm>
+          <div className="text-center">
+            Already have an account ?{" "}
+            <Link className="text-blue-600 font-bold underline" href={"/login"}>
+              Login
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

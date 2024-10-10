@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { FieldValues } from "react-hook-form";
-import { registerUser } from "../services/AuthService/registerUser";
+import { loginUser, registerUser } from "../services/AuthService";
 import { toast } from "sonner";
 
-const useRegisterUser = () => {
+export const useRegisterUser = () => {
     return (
         useMutation<any, Error, FieldValues>({
             mutationKey: ["User_Registration"],
@@ -18,4 +18,18 @@ const useRegisterUser = () => {
     );
 };
 
-export default useRegisterUser;
+
+export const useLoginUser = () => {
+    return (
+        useMutation<any, Error, FieldValues>({
+            mutationKey: ["User_Login"],
+            mutationFn: async (userData) => await loginUser(userData),
+            onSuccess: () => {
+                toast.success("User Login successfully...!!");
+            },
+            onError: (error) => {
+                toast.error(error.message);
+            }
+        })
+    );
+};
