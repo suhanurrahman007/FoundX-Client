@@ -1,9 +1,9 @@
-import { getRecentPosts } from "@/src/services/RecentPost";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { TPost } from "@/src/types";
 import Container from "@/src/components/Ui/Container";
 import Card from "@/src/components/Ui/Card";
+import { getRecentPosts } from "@/src/services/RecentPost";
 
 export default async function RecentPosts() {
   const { data: posts } = await getRecentPosts();

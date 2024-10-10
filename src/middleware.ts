@@ -13,15 +13,15 @@ const roleBasedRoutes = {
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
-    console.log(pathname);
+    // console.log(pathname);
 
-      const user = {
-        name: "Mir",
-        token: "adsf asda",
-        role: "USER",
-      };
+    //   const user = {
+    //     name: "Mir",
+    //     token: "adsf asda",
+    //     role: "USER",
+    //   };
 
-    // const user = undefined;
+    const user = undefined;
 
     if (!user) {
         if (AuthRoutes.includes(pathname)) {
