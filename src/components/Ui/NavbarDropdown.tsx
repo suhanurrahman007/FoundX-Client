@@ -20,6 +20,7 @@ export default function NavbarDropdown() {
   const handleLogout = () => {
     logout();
     userLoading(true);
+    router.push("/register")
   };
 
   const handleNavigation = (pathname: string) => {

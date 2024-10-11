@@ -14,7 +14,7 @@ interface TProps {
 
 export default function FXInput({
   variant = "bordered",
-  size = "md",
+  size = "sm",
   required = false,
   type = "text",
   label,
