@@ -1,16 +1,10 @@
 "use client";
 
+import { TInput } from "@/src/types";
 import { Input } from "@nextui-org/input";
 import { useFormContext } from "react-hook-form";
 
-interface TProps {
-  variant?: "flat" | "bordered" | "faded" | "underlined";
-  size?: "sm" | "md" | "lg";
-  required?: boolean;
-  type?: string;
-  label: string;
-  name: string;
-}
+interface TProps extends TInput {}
 
 export default function FXInput({
   variant = "bordered",
